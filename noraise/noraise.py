@@ -11,11 +11,11 @@ from functools import wraps
 
 # ------------------------------------------------------------ Public methods ------------------------------------------------------------ #
 
-def noraise(print_exc: bool = False) -> Union[Exception, Any]:
+def noraise(print_exc: bool = True) -> Union[Exception, Any]:
     """surpasses Exception raise
 
     Args:
-        print_exc (bool, optional): Wether the stacktracee should be printed or not. Defaults to False.
+        print_exc (bool, optional): Wether the stacktracee should be printed or not. Defaults to True.
 
     Returns:
         Union[Exception, Any]: if a raise is catched. The exception is returned as result
@@ -27,9 +27,9 @@ def noraise(print_exc: bool = False) -> Union[Exception, Any]:
                 return function(*args, **kwargs)
             except Exception as e:
                 if print_exc:
-                    print('\n\n<-------------------------------- Catched with \'@noraise\' start -------------------------------->\n')
+                    print('\n\n<-------------------------------- Caught with \'@noraise\' start -------------------------------->\n')
                     traceback.print_exc()
-                    print('\n<--------------------------------- Catched with \'@noraise\' end --------------------------------->\n\n')
+                    print('\n<--------------------------------- Caught with \'@noraise\' end --------------------------------->\n\n')
 
                 return e
 
