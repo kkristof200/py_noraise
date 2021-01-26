@@ -11,7 +11,7 @@ from functools import wraps
 
 # ------------------------------------------------------------ Public methods ------------------------------------------------------------ #
 
-def noraise(print_exc: bool = True) -> Union[Exception, Any]:
+def noraise(print_exc: bool = True, return_none_instead_of_error: bool = True) -> Union[Exception, Any]:
     """surpasses Exception raise
 
     Args:
@@ -31,7 +31,7 @@ def noraise(print_exc: bool = True) -> Union[Exception, Any]:
                     traceback.print_exc()
                     print('\n<--------------------------------- Caught with \'@noraise\' end --------------------------------->\n\n')
 
-                return e
+                return None if return_none_instead_of_error else e
 
         return wrapper
     return real_decorator
