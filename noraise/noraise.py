@@ -1,7 +1,7 @@
 # --------------------------------------------------------------- Imports ---------------------------------------------------------------- #
 
 # System
-from typing import Union, Any
+from typing import Optional, Union
 import os, traceback
 from functools import wraps
 
@@ -11,7 +11,7 @@ from functools import wraps
 
 # ------------------------------------------------------------ Public methods ------------------------------------------------------------ #
 
-def noraise(print_exc: bool = True, return_none_instead_of_error: bool = True) -> Union[Exception, Any]:
+def noraise(print_exc: bool = True, return_exception: bool = False, default_return_value: Optional[any] = None) -> Union[Exception, any]:
     """surpasses Exception raise
 
     Args:
@@ -36,7 +36,7 @@ def noraise(print_exc: bool = True, return_none_instead_of_error: bool = True) -
                     traceback.print_exc()
                     print('\n{}\n\n'.format(__comment_line('', text_padding_char='')))
 
-                return None if return_none_instead_of_error else e
+                return e if return_exception else e
 
         return wrapper
     return real_decorator
