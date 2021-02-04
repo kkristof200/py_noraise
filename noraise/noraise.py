@@ -36,7 +36,7 @@ def noraise(print_exc: bool = True, return_exception: bool = False, default_retu
                     traceback.print_exc()
                     print('\n{}\n\n'.format(__comment_line('', text_padding_char='')))
 
-                return e if return_exception else e
+                return e if return_exception else default_return_value
 
         return wrapper
     return real_decorator
