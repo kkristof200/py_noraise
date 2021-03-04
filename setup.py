@@ -9,7 +9,7 @@ else:
 
 setuptools.setup(
     name="noraise",
-    version="0.0.8",
+    version="0.0.9",
     author="Kristof",
     description="noraise",
     long_description=long_description,

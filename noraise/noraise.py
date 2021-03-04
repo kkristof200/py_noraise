@@ -25,6 +25,8 @@ def noraise(print_exc: bool = True, return_exception: bool = False, default_retu
         def wrapper(*args, **kwargs):
             try:
                 return function(*args, **kwargs)
+            except KeyboardInterrupt as e:
+                raise e
             except Exception as e:
                 if print_exc:
                     title = 'Caught with @noraise'
