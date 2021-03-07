@@ -1,7 +1,7 @@
 # --------------------------------------------------------------- Imports ---------------------------------------------------------------- #
 
 # System
-from typing import Optional, Union
+from typing import Optional, Union, List
 import os, traceback
 from functools import wraps
 
@@ -11,7 +11,12 @@ from functools import wraps
 
 # ------------------------------------------------------------ Public methods ------------------------------------------------------------ #
 
-def noraise(print_exc: bool = True, return_exception: bool = False, default_return_value: Optional[any] = None) -> Union[Exception, any]:
+def noraise(
+    print_exc: bool = True,
+    return_exception: bool = False,
+    default_return_value: Optional[any] = None,
+    ignored_error_types: Optional[List[any]] = None
+) -> Union[Exception, any]:
     """surpasses Exception raise
 
     Args:
@@ -28,7 +33,7 @@ def noraise(print_exc: bool = True, return_exception: bool = False, default_retu
             except KeyboardInterrupt as e:
                 raise e
             except Exception as e:
-                if print_exc:
+                if print_exc and (not ignored_error_types or type(e) in ignored_error_types):
                     title = 'Caught with @noraise'
                     clr_start = '\033[1m\033[38;2;255;159;5m'
                     clr_end   = '\033[0m'
