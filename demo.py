@@ -10,8 +10,8 @@ print(type(res), res)
 # This will not catch the crash, and print
 # 
 # 
-# < ----------------------------------------------- Caught with @noraise ---------------------------------------------- >
-# 
+# < ------------------------------------- Caught with @noraise ------------------------------------ >
+#
 # Traceback (most recent call last):
 #   File "/Users/kristofk/github/py_noraise/noraise/noraise.py", line 32, in wrapper
 #     return function(*args, **kwargs)
@@ -19,7 +19,7 @@ print(type(res), res)
 #     return 1/0
 # ZeroDivisionError: division by zero
 # 
-# < -------------------------------------------------------------------------------------------------------------------- >
+# < ----------------------------------------------------------------------------------------------- >
 # 
 # 
 # <class 'ZeroDivisionError'> division by zero
