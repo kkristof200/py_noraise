@@ -20,10 +20,10 @@ def noraise(
     """surpasses Exception raise
 
     Args:
-        print_exc (bool, optional): Wether the stacktracee should be printed or not. Defaults to True.
+        print_exc (bool, optional): Wether the stacktrace should be printed or not. Defaults to True.
 
     Returns:
-        Union[Exception, Any]: if a raise is catched. The exception is returned as result
+        Union[Exception, Any]: if a raise is caught. The exception is returned as result.
     """
     def real_decorator(function):
         @wraps(function)
