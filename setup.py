@@ -10,7 +10,7 @@ else:
 
 setuptools.setup(
     name='noraise',
-    version="0.0.15",
+    version="0.0.16",
     author='Kristóf-Attila Kovács',
     description='noraise',
     long_description=long_description,

@@ -18,6 +18,15 @@
 
 Lightweight utility package, that provides a function decorator to easily catch and print exceptions
 
+## Supported Args
+
+| name                 | type                      | default value | description                                                                     |
+|----------------------|---------------------------|---------------|---------------------------------------------------------------------------------|
+| print_exc            | bool                      | True          | If True, prints stacktrace                                                      |
+| return_exception     | bool                      | False         | If True, returns caught exception                                               |
+| default_return_value | Optional[any]             | None          | What to return upon caught exception if<br>'return_exception' is False          |
+| ignored_error_types  | Optional[List[Exception]] | None          | In which cases should the stacktrace print<br>be skipped if 'print_exc' is True |
+
 ## Install
 
 ~~~~bash
