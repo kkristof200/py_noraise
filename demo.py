@@ -1,6 +1,6 @@
 from noraise import noraise
 
-@noraise(print_exc=True, return_exception=True)
+@noraise(print_exc=True, return_exception=True, ignored_error_types=[ZeroDivisionError])
 def f2():
     return 1/0
 

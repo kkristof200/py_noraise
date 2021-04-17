@@ -1,15 +1,15 @@
-# --------------------------------------------------------------- Imports ---------------------------------------------------------------- #
+# ------------------------------------------------------------ Imports ----------------------------------------------------------- #
 
 # System
 from typing import Optional, Union, List
 import os, traceback
 from functools import wraps
 
-# ---------------------------------------------------------------------------------------------------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------------------- #
 
 
 
-# ------------------------------------------------------------ Public methods ------------------------------------------------------------ #
+# -------------------------------------------------------- Public methods -------------------------------------------------------- #
 
 def noraise(
     print_exc: bool = True,
@@ -19,8 +19,11 @@ def noraise(
 ) -> Union[Exception, any]:
     """surpasses Exception raise
 
-    Args:
-        print_exc (bool, optional): Wether the stacktrace should be printed or not. Defaults to True.
+    KwArgs:
+        print_exc (bool, optional):                          If True, prints stacktrace.        Defaults to True.
+        return_exception (bool, optional):                   If True, returns caught exception. Defaults to False.
+        default_return_value (Optional[any], optional):      What to return upon caught exception if 'return_exception' is False. Defaults to None.
+        ignored_error_types (Optional[List[any]], optional): In which cases should the stacktrace print be skipped if 'print_exc' is True. Defaults to None.
 
     Returns:
         Union[Exception, Any]: if a raise is caught. The exception is returned as result.
@@ -33,7 +36,7 @@ def noraise(
             except KeyboardInterrupt as e:
                 raise e
             except Exception as e:
-                if print_exc and (not ignored_error_types or type(e) in ignored_error_types):
+                if print_exc and (not ignored_error_types or type(e) not in ignored_error_types):
                     title = 'Caught with @noraise'
                     clr_start = '\033[1m\033[38;2;255;159;5m'
                     clr_end   = '\033[0m'
@@ -47,6 +50,9 @@ def noraise(
 
         return wrapper
     return real_decorator
+
+
+# -------------------------------------------------------- Private methods ------------------------------------------------------- #
 
 def __comment_line(
     text: str,
@@ -67,4 +73,4 @@ def __comment_line(
 
     return '{}{}{}{}{}{}{}'.format(pre, pre_div_len*filler_char, text_padding_char, text, text_padding_char, post_div_len*filler_char, post)
 
-# ---------------------------------------------------------------------------------------------------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------------------- #
